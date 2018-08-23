@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+fileList=$1
+
+old_IFS="$IFS"
+IFS='
+'
+for file in $(cat $fileList)
+do
+    geocodeGdal.py -l ../../geom_master/lat.rdr -L ../../geom_master/lon.rdr -f $file -x 0.0028125 -y 0.00081081 -b '71.85 74 123.1 129.7'
+    
+done
+IFS=$old_IFS
